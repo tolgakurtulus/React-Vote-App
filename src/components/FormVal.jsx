@@ -48,7 +48,7 @@ const FormVal = ({ setInputText, setInputLink, todos, setTodos, inputText, input
                 value={inputText}
                 onChange={inputTextHandler}
                 />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <Form.Control.Feedback>Success !</Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} md="12" controlId="validationCustom02">
               <Form.Label className="text-light">Link Url</Form.Label>
@@ -59,7 +59,7 @@ const FormVal = ({ setInputText, setInputLink, todos, setTodos, inputText, input
                 value={inputLink}
                 onChange={inputLinkHandler}
                 />
-              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <Form.Control.Feedback>Success !</Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
           {/* <Button className="btn btn-dark" type="submit">Add Link</Button> */}

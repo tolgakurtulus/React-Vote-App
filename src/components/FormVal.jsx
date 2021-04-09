@@ -65,8 +65,6 @@ const FormVal = ({ setInputText, setInputLink, todos, setTodos, inputText, input
           {/* <Button className="btn btn-dark" type="submit">Add Link</Button> */}
           <Button onClick={submitTodoHandler} className="btn btn-dark" type="button">Add Link</Button>
         </Form>
-
-
     )
 }
 

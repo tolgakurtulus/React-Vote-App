@@ -224,3 +224,12 @@ button:active {
         display: block;
     }
 }
+
+.paginationBttns {
+    &.true {
+        visibility: visible;
+    }
+    &.false {
+        visibility: hidden;
+    }
+}

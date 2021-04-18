@@ -7,12 +7,18 @@ const Vote = ({ text, link, score, todo, todos, setTodos }) => {
     let [count, setCount] = useState(score)
     const [isShown, setIsShown] = useState("false");
     const [showModal, setShow] = useState(false);
-
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function increase() {
-        setCount(count + 1);
+    useEffect(() => {
+        increase();
+        decrease();
+    }, [])
+
+    const increase = () => {
+        console.log("AAAAAAAAAAAAAAAAA = ", count)
+        setCount(count = count + 1);
         setTodos(todos.map((item) => {
             if (item.id === todo.id) {
                 return {
@@ -21,10 +27,13 @@ const Vote = ({ text, link, score, todo, todos, setTodos }) => {
             }
             return item;
         }));
+        console.log("todos 25", todos)
+
     }
 
-    function decrease() {
-        setCount(count - 1);
+    const decrease = () => {
+        console.log("ZZZZZZZZZZZZ = ", count)
+        setCount(count = count - 1);
         setTodos(todos.map((item) => {
             if (item.id === todo.id) {
                 return {
@@ -33,9 +42,11 @@ const Vote = ({ text, link, score, todo, todos, setTodos }) => {
             }
             return item;
         }));
+        console.log("todos 40", todos)
+
     }
 
-    function onCountEdit(event) {
+    const onCountEdit = (event) => {
         let countContent = Number(event.target.textContent)
         if (Number.isNaN(countContent))
             setCount(Math.floor(Math.random() * 10))
@@ -45,21 +56,6 @@ const Vote = ({ text, link, score, todo, todos, setTodos }) => {
 
     const deleteHandler = () => {
         setTodos(todos.filter(el => el.id !== todo.id))
-    };
-
-    const completeHandler = () => {
-        setTodos(todos.map((item) => {
-            if (item.id === todo.id) {
-                return {
-                    ...item, completed: !item.completed
-                }
-            }
-            return item;
-        }));
-    };
-
-    const showCloseButton = (e) => {
-        e.target.style.background = 'red';
     };
 
     return (
@@ -74,8 +70,8 @@ const Vote = ({ text, link, score, todo, todos, setTodos }) => {
                     <div className="box-link"><p>{link}</p></div>
                     <div className="box-vote">
                         <div className='count-wrapper'>
-                            <button type="button" class="btn btn-danger" onClick={decrease}>↓ Down Vote</button>
-                            <button type="button" class="btn btn-success" onClick={increase}>↑ Up Vote</button>
+                            <button type="button" className="btn btn-danger" onClick={decrease}>↓ Down Vote</button>
+                            <button type="button" className="btn btn-success" onClick={increase}>↑ Up Vote</button>
                         </div>
                     </div>
                 </div>

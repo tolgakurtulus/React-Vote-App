@@ -23,6 +23,8 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
+  const [paginationEmptyControlVal, setpaginationEmptyControlVal] = useState("false");
+  
 
   const usersPerPage = 4;
   const pagesVisited = pageNumber * usersPerPage;
@@ -43,6 +45,7 @@ function App() {
     filterHandler();
     saveLocalTodos();
     voteSort();
+    paginationEmptyControl();
   }, [todos, status]);
 
   useEffect(() => {
@@ -94,6 +97,14 @@ function App() {
     }
   }
 
+  const paginationEmptyControl = () => {
+    if(todos.length !== 0) {
+      setpaginationEmptyControlVal("true");
+    } else {
+      setpaginationEmptyControlVal("false", todos);
+    }
+  }
+
   return (
     <div className="App c-app">
       <header>
@@ -123,11 +134,12 @@ function App() {
                 usersPerPage={usersPerPage} 
               />
               <ReactPaginate
+                // className={}
                 previousLabel={"<"}
                 nextLabel={">"}
                 pageCount={pageCount}
                 onPageChange={changePage}
-                containerClassName={"paginationBttns"}
+                containerClassName={`paginationBttns ${paginationEmptyControlVal}`}
                 previousLinkClassName={"previousBttn"}
                 nextLinkClassName={"nextBttn"}
                 disabledClassName={"paginationDisabled"}

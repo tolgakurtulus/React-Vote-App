@@ -5,15 +5,15 @@ import { Form, Button, Col, Alert } from "react-bootstrap";
 
 const FormVal = ({ setInputText, setInputLink, todos, setTodos, inputText, inputLink, setStatus }) => {
 
-    const [validated, setValidated] = useState(false);  
+    const [validated, setValidated] = useState(false);
 
     const inputTextHandler = (e) => {
-        setInputText(e.target.value)
-    }
+      setInputText(e.target.value);
+    };
 
     const inputLinkHandler = (e) => {
-        setInputLink(e.target.value)
-    }
+      setInputLink(e.target.value);
+    };
 
     const submitTodoHandler = (e) => {
       const form = e.currentTarget;
@@ -23,23 +23,23 @@ const FormVal = ({ setInputText, setInputLink, todos, setTodos, inputText, input
       }
       setValidated(true);
 
-      if(!(inputText === "" && inputLink === "")) {
-        console.log("Boş Değil inputText", inputText )
-        console.log("Boş Değil inputLink", inputLink )
-        
+      if (!(inputText === "" && inputLink === "")) {
         e.preventDefault();
         setTodos([
           ...todos,
-          { text: inputText, link: inputLink, completed: false, id: Math.random() * 100, score: 0, index: 0 },
+          {
+            text: inputText,
+            link: inputLink,
+            completed: false,
+            id: Math.random() * 100,
+            score: 0,
+            index: 0,
+          },
         ]);
         setInputText("");
         setInputLink("");
-
-      } else {
-        console.log("Boş inputText", inputText )
-        console.log("Boş inputLink", inputLink )
       }
-    }
+    };
     
     return (
           <Form noValidate validated={validated}>

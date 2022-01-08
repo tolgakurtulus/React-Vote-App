@@ -4,58 +4,56 @@ import { Modal, Button } from "react-bootstrap";
 
 const Vote = ({ text, link, score, todo, todos, setTodos }) => {
 
-    let [count, setCount] = useState(score)
+    let [count, setCount] = useState(score);
     const [isShown, setIsShown] = useState("false");
     const [showModal, setShow] = useState(false);
-    
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        increase();
-        decrease();
-    }, [])
+      increase();
+      decrease();
+    }, []);
 
     const increase = () => {
-        console.log("AAAAAAAAAAAAAAAAA = ", count)
-        setCount(count = count + 1);
-        setTodos(todos.map((item) => {
-            if (item.id === todo.id) {
-                return {
-                    ...item, score: count
-                }
-            }
-            return item;
-        }));
-        console.log("todos 25", todos)
-
-    }
+      setCount((count = count + 1));
+      setTodos(
+        todos.map((item) => {
+          if (item.id === todo.id) {
+            return {
+              ...item,
+              score: count,
+            };
+          }
+          return item;
+        })
+      );
+    };
 
     const decrease = () => {
-        console.log("ZZZZZZZZZZZZ = ", count)
-        setCount(count = count - 1);
-        setTodos(todos.map((item) => {
-            if (item.id === todo.id) {
-                return {
-                    ...item, score: count
-                }
-            }
-            return item;
-        }));
-        console.log("todos 40", todos)
-
-    }
+      setCount((count = count - 1));
+      setTodos(
+        todos.map((item) => {
+          if (item.id === todo.id) {
+            return {
+              ...item,
+              score: count,
+            };
+          }
+          return item;
+        })
+      );
+    };
 
     const onCountEdit = (event) => {
-        let countContent = Number(event.target.textContent)
-        if (Number.isNaN(countContent))
-            setCount(Math.floor(Math.random() * 10))
-        else
-            setCount(countContent)
-    }
+      let countContent = Number(event.target.textContent);
+      if (Number.isNaN(countContent)) setCount(Math.floor(Math.random() * 10));
+      else setCount(countContent);
+    };
 
     const deleteHandler = () => {
-        setTodos(todos.filter(el => el.id !== todo.id))
+      setTodos(todos.filter((el) => el.id !== todo.id));
     };
 
     return (

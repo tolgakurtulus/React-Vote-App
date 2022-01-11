@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button, Col, Alert } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button, Col } from "react-bootstrap";
 
 const FormVal = ({ setInputText, setInputLink, todos, setTodos, inputText, inputLink, setStatus }) => {
   

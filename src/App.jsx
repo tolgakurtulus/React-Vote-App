@@ -16,9 +16,7 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const [paginationEmptyControlVal, setpaginationEmptyControlVal] =
-    useState("false");
-
+  const [paginationEmptyControlVal, setpaginationEmptyControlVal] = useState("false");
   const usersPerPage = 4;
   const pagesVisited = pageNumber * usersPerPage;
   const pageCount = Math.ceil(todos.length / usersPerPage);
@@ -97,7 +95,7 @@ function App() {
       </header>
       <Router>
         <Switch>
-          <Route path="/form">
+          <Route exact path="/form">
             <ReturnForm />
             <FormVal
               inputText={inputText}
@@ -109,7 +107,7 @@ function App() {
               setStatus={setStatus}
             />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <SubmitLink />
             <VoteList
               filteredTodos={filteredTodos}

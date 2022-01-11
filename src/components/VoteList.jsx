@@ -4,7 +4,6 @@ import Vote from "./Vote"
 
 const VoteList = ({ todos, setTodos, filteredTodos, pagesVisited, usersPerPage }) => {
     return (
-        
         <div className="c-todo-container">
             <ul className="c-todo-list list-group">
                 {filteredTodos

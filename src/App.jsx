@@ -16,7 +16,8 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const [paginationEmptyControlVal, setpaginationEmptyControlVal] = useState("false");
+  const [paginationEmptyControlVal, setpaginationEmptyControlVal] =
+    useState("false");
   const usersPerPage = 4;
   const pagesVisited = pageNumber * usersPerPage;
   const pageCount = Math.ceil(todos.length / usersPerPage);
@@ -67,15 +68,15 @@ function App() {
 
   // Save to Local
   const saveLocalTodos = () => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    window.localStorage.setItem("todos", JSON.stringify(todos));
   };
 
   // Get to Local
   const getLocalTodos = () => {
-    if (localStorage.getItem("todos") === null) {
-      localStorage.setItem("todos", JSON.stringify([]));
+    if (window.localStorage.getItem("todos") === null) {
+      window.localStorage.setItem("todos", JSON.stringify([]));
     } else {
-      let todoLocal = JSON.parse(localStorage.getItem("todos"));
+      let todoLocal = JSON.parse(window.localStorage.getItem("todos"));
       setTodos(todoLocal);
     }
   };
@@ -93,44 +94,42 @@ function App() {
       <header>
         <h1>Vote App 2</h1>
       </header>
-      <Router>
-        <Switch>
-          <Route exact path="/form">
-            <ReturnForm />
-            <FormVal
-              inputText={inputText}
-              inputLink={inputLink}
-              todos={todos}
-              setTodos={setTodos}
-              setInputText={setInputText}
-              setInputLink={setInputLink}
-              setStatus={setStatus}
-            />
-          </Route>
-          <Route exact path="/">
-            <SubmitLink />
-            <VoteList
-              filteredTodos={filteredTodos}
-              setTodos={setTodos}
-              todos={todos}
-              pagesVisited={pagesVisited}
-              usersPerPage={usersPerPage}
-            />
-            <ReactPaginate
-              // className={}
-              previousLabel={"<"}
-              nextLabel={">"}
-              pageCount={pageCount}
-              onPageChange={changePage}
-              containerClassName={`paginationBttns ${paginationEmptyControlVal}`}
-              previousLinkClassName={"previousBttn"}
-              nextLinkClassName={"nextBttn"}
-              disabledClassName={"paginationDisabled"}
-              activeClassName={"paginationActive"}
-            />
-          </Route>
-        </Switch>
-      </Router>
+      <Switch>
+        <Route exact path="/React-Vote-App">
+          <SubmitLink />
+          <VoteList
+            filteredTodos={filteredTodos}
+            setTodos={setTodos}
+            todos={todos}
+            pagesVisited={pagesVisited}
+            usersPerPage={usersPerPage}
+          />
+          <ReactPaginate
+            // className={}
+            previousLabel={"<"}
+            nextLabel={">"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={`paginationBttns ${paginationEmptyControlVal}`}
+            previousLinkClassName={"previousBttn"}
+            nextLinkClassName={"nextBttn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />
+        </Route>
+        <Route path="/React-Vote-App/form">
+          <ReturnForm />
+          <FormVal
+            inputText={inputText}
+            inputLink={inputLink}
+            todos={todos}
+            setTodos={setTodos}
+            setInputText={setInputText}
+            setInputLink={setInputLink}
+            setStatus={setStatus}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 }

@@ -1,19 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ReturnForm = () => {
   return (
-    <a className="container mb-5 mt-5" href="/React-Vote-App/form">
-      <div className="box row">
-        <div className="box-left col-4">
-          <h2>
-            <i className="fas fa-plus"></i>
-          </h2>
+    <Link to={`/React-Vote-App/form`}>
+      <a className="container mb-5 mt-5">
+        <div className="box row">
+          <div className="box-left col-4">
+            <h2>
+              <i className="fas fa-plus"></i>
+            </h2>
+          </div>
+          <div className="box-right col-8">
+            <h2>SUBMIT A LINK</h2>
+          </div>
         </div>
-        <div className="box-right col-8">
-          <h2>SUBMIT A LINK</h2>
-        </div>
-      </div>
-    </a>
+      </a>
+    </Link>
   );
 };
 

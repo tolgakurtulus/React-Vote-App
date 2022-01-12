@@ -1,10 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SubmitLink = () => {
   return (
-    <a className="container mb-5 mt-5 text-light" href="/React-Vote-App">
-      <h6>← Return to List</h6>
-    </a>
+    <Link to={`/React-Vote-App`}>
+      <span className="container mb-5 mt-5 text-light">
+        <h6>← Return to List</h6>
+      </span>
+    </Link>
+
   );
 };
 

@@ -92,7 +92,7 @@ function App() {
   return (
     <div className="App c-app">
       <header>
-        <h1>Vote App 2</h1>
+        <h1>Vote App 1</h1>
       </header>
       <Switch>
         <Route exact path="/React-Vote-App">
